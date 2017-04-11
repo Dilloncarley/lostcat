@@ -1,0 +1,82 @@
+
+<!-- imports the library and other web components to be used-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/g-r-i-d/g-r-i-d.html">
+<!-- -->
+
+
+<dom-module id="lostpet-app">
+  <template>
+
+
+    <style>
+  google-map {
+    height: 550px;
+    width:550px;
+  }
+ 
+</style>
+
+<center><h1>Lost Cats </h1></center>
+
+   <g-r-i-d min-column-width="550" gutter="35" maxColumns="2" row-height="100cw">
+  <div class="item">
+    <google-map latitude="33.4564145" longitude="-88.9022638" api-key="" fit-to-markers>
+    <template is="dom-repeat" items="{{data}}">
+        <google-map-marker latitude="{{item.lastSeenLat}}" longitude="{{item.lastSeenLon}}" icon="https://cdn2.iconfinder.com/data/icons/spooky-halloween-icons/842/black-cat-64.png">
+            <h2>{{item.petName}}</h2>
+        </google-map-marker>
+    </template>
+</google-map>
+  </div>
+
+
+  <div class="item">
+    <div class="form">
+    <paper-input id="name" always-float-label label="Cat Name" value=""></paper-input>
+    <paper-input id="seenLat" always-float-label label="Last Seen Latitude" value =""></paper-input>
+    <paper-input id="seenLon" always-float-label label="Last Seen Longitude" value =""></paper-input>
+    <paper-button on-tap="addLostPet"> Post Lost Cat </paper-button>
+</div>
+  </div>
+</g-r-i-d>
+
+
+
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'lostpet-app',
+
+      properties: {
+        lostPetData: {
+          type: String,
+        },
+      },
+
+      addLostPet:function(){
+       this.push('data', {
+        petName:this.$.name.value,
+        lastSeenLat:  this.$.seenLat.value,
+        lastSeenLon:  this.$.seenLon.value
+
+      });
+
+       this.$.name.value = "";
+        this.$.seenLat.value = "";
+        this.$.seenLon.value ="";
+
+      },
+      ready: function() {
+        this.data = [];
+      }
+
+    });
+  </script>
+</dom-module>

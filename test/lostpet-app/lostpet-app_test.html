@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>lostpet-app test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../src/lostpet-app/lostpet-app.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <lostpet-app></lostpet-app>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('lostpet-app', function() {
+
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'lostpet-app');
+        });
+
+      });
+    </script>
+  </body>
+</html>
