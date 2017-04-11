@@ -24,7 +24,7 @@
 
    <g-r-i-d min-column-width="550" gutter="35" maxColumns="2" row-height="100cw">
   <div class="item">
-    <google-map latitude="33.4564145" longitude="-88.9022638" api-key="" fit-to-markers>
+    <google-map latitude="33.4564145" longitude="-88.9022638" api-key="{{YOUR API KEY HERE}}" fit-to-markers>
     <template is="dom-repeat" items="{{data}}">
         <google-map-marker latitude="{{item.lastSeenLat}}" longitude="{{item.lastSeenLon}}" icon="https://cdn2.iconfinder.com/data/icons/spooky-halloween-icons/842/black-cat-64.png">
             <h2>{{item.petName}}</h2>
